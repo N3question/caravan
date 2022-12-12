@@ -1,0 +1,356 @@
+/*ブラウザがそれぞれ持っているCSSをリセットするための記述*/
+*{
+ margin: 0;
+ padding: 0;
+ /*デフォルト値は、box-sizing: content-box;＞余計な計算が不必要なborder-boxのほうが扱いやすく、一般的*/
+ box-sizing: border-box;
+ color: #6c6b6b;
+}
+
+a{
+ text-decoration: none;
+}
+
+/*フォントを変更*/
+header, nav, h2, .main-visual, footer {
+  font-family: Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
+}
+
+header{
+ width: 90%;/*CARAVANのタイトルが左端から少し内側に入っているのに影響している*/
+ padding: 15px 0;
+ margin: 0 auto;
+ /*text-align(テキストアライン)＞テキストや画像の行揃えを設定するプロパティ
+ */
+ /*親要素に設定する。インライン要素*/
+ text-align:center;
+ position: relative;
+ /*static...
+ 基準値や位置の設定を行わない（初期値）
+ top、bottom、left、rightは適用されない。つまり上下左右に移動しない。*/
+
+ /*absolute...
+ 絶対位置を指定する。基準位置は、ウィンドウ左上の位置を指定できる。
+ 親要素にrelativeが指定されている場合は、親要素の左上が基準位置になる。*/
+
+ /*relative...
+ 「もともと表示されるはずだった場所」を基準とした配置。
+ 相対位置を指定する。static指定時の位置（初期の位置）が基準位置になる。*/
+}
+
+.social i{
+ display: inline-block;
+ margin-left: 20px;
+}
+
+/*headerタグ内のheadingクラスのみ反映される*/
+/*全体に適用される共通デザインと部分的に適用されるデザインとでは記述が異なる
+*/
+/*特定の場所にある時は以下参照
+　h1,h2{}　h1要素とh2要素の両方に適用
+　header>h1{}　header要素の直下にある要素に適用
+　h1#header{}　id名「header」のh1要素に適用
+*/
+header.heading{
+ font-size: 32px;
+}
+
+.nav-list{
+ text-align: center;
+ padding: 10px 0;
+ margin: 0 auto;
+}
+
+.nav-list-item{
+ /*list-styleは箇条書きリストの行頭のスタイルを制御できるプロパティ
+　 今回は通常黒丸（・）が付くのを制御。マークなしのnone*/
+ list-style: none;
+ /*インライン要素とブロック要素を持ち合わせた要素。
+   displayの値として設定することで利用可能
+   [特徴]並び方＞インライン要素と同様。横並び
+         中身＞ブロック要素と同様。width,height,padding,maeginの指定可能*/
+ /*注意点＞インラインブロック要素がテキストの一部として認識されることが原因で不要な隙間ができる
+ 　親要素のfont-sizeを０にすることで解消*/
+ display: inline-block;
+ margin: 0 20px;
+}
+
+.main-visual{
+ width: 100%;
+ height: 300px;
+ background-image: url(img/mv.jpg);
+ background-size: cover; /*横対比を維持したまま背景領域を埋め尽くす*/
+ background-position: center;
+ /*背景画像を中央に*/
+}
+
+.main-visual-content{
+ width: 40%;
+ height: 300px;
+ background-color: rgba(0,0,0,0.5);
+ text-align: center;
+ padding-top: 105px;
+}
+
+.main-visual-text{
+ color: #fff;
+}
+
+.main-visual-name{
+ margin-top:30px;
+ color:#fff;
+}
+
+main{
+ width: 800px;
+ /*height: 1400px;指定解除*/ /*background-color: green;指定解除*/
+ /*ブロックレベル要素の中央揃え。自動で上下余白を０px＆左右を等間隔*/
+ display: flex; /*Flexboxの利用
+ justify-content:center; /*子要素の横並び・中央寄せ*/
+ margin: 0 auto;  /*要素自身の中央揃え。margin: 0 autoを使う時は左右に余白がないとできない。widthがpxの単位でないと使用不可*/
+ padding: 70px 0; /*上下に70px、左右に０pxの内側余白*/
+}
+
+.blog{
+ width: 540px;
+ margin-right: 30px; /*領域の右側余白*/
+}
+
+.blog-heading{
+ border-bottom: 8px solid #f7f7f7;
+ text-align: center;
+ line-height: 0.6; /*これは０.６倍の高さということ*/
+}
+
+.blog-box{
+ padding-top: 50px;
+}
+
+.blog-item{
+ padding-bottom: 20px;
+ margin-bottom: 20px;
+ border-bottom: 1px solid #f7f7f7;
+ display: flex;
+ justify-content: flex-start;
+}
+
+.blog-image{
+ height: 180px;
+}
+
+.blog-text{
+ /*padding-top: 25px;*/
+ /*padding-left: 30px;*/
+ /*上のように２つに分けなくていい。まとめる。上右下左の順番*/
+ padding: 25px 0 0 30px;
+}
+
+.blog-text-heading{
+ padding-bottom: 15px;
+}
+
+.blog-date{
+ font-size: 12px;
+ display: inline-block;
+}
+
+.category{
+ display: inline-block;
+ padding: 5px 8px;
+ background-color: #acabab;
+ border-radius: 3px;
+ color: #fff;
+ font-size:11px;
+}
+
+.pagination{
+ text-align: center;
+ padding-top: 50px;
+}
+
+.pagination p{
+ display: inline-block;
+ width: 30px;
+ height: 30px;
+ margin: 0.5px;
+ color: #fff;
+ background-color: #acabab;
+ border-radius: 3px;
+ line-height: 30px;
+}
+
+.sidebar{
+ width: 230px;
+}
+
+.common-heading {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+
+.sidebar-contents {
+  padding: 50px 0;
+}
+
+.popular-text,
+.categories-text {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #f7f7f7;
+  margin-bottom: 5px;
+}
+
+.popular-text:last-child,
+.categories-text:last-child {
+  margin: 0;
+  padding: 0;
+  border: none;
+  /*last-childこれを擬似クラスという*/
+}
+
+.instagram .sidebar-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.instagram-box {
+  width: 110px;
+  padding-top: 110px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+}
+
+.instagram-box:nth-child(odd) {
+ margin-right: 10px;
+ /*奇数番目のinstagram-boxに装飾*/
+ /*（even）の場合、偶数番目に適用される*/
+}
+
+.instagram-box:nth-child(1) {
+ background-image: url(img/airport.jpg);
+ /*一番目のinstagram-boxを装飾*/
+}
+
+.instagram-box:nth-child(2) {
+ background-image: url(img/japan.jpg);
+}
+
+.instagram-box:nth-child(3) {
+ background-image: url(img/snow.jpg);
+}
+
+.instagram-box:nth-child(4) {
+ background-image: url(img/japan2.jpg);
+}
+
+.instagram-box:nth-child(5) {
+ background-image: url(img/lake.jpg);
+}
+
+.instagram-box:nth-child(6) {
+ background-image: url(img/road.jpg);
+}
+
+footer{
+ width: 100%;
+ height: 120px;
+ text-align: center;
+ line-height: 120px;
+ background-color: #848282;
+}
+
+.footer-text{
+ color: #fff;
+}
+
+/*＋αの補足　上下の中央揃え
+　例）改行のないテキストを親要素のheightに対して中央揃え
+　　　→テキストに対してline-height:〇〇ox;
+　　　 ここで指定した値は親要素のボックスのheightと同じ値にする
+*/
+
+/*以下メディアクエリ（media queries）
+  条件に応じてCSSの記述を切り替える。
+  ！！！！！CSSの一番下側に書くこと！！！！！
+  （括弧の中が条件）にあたる*/
+@media screen and (max-width: 425px) {
+ header{
+  width: 100%;
+ }
+
+ .nav-list{
+  width: 100%;
+ }
+
+ .nav-list-item{
+  width: 100%;
+  /*display: none;*/
+  /*これは間違い。非表示になってしまう。*/
+  margin: 0 0 10px 0;
+  /*nav-list-itemが横並びから縦並びになったので下側のみに余白をつける*/
+
+ }
+
+ .social{
+  display: none
+  /*PC画面では表示してスマホ画面では非表示にする*/
+ }
+
+ .main-visual-content{
+ /*PC画面では40％になっているのでwidthをフルにする*/
+ width: 100%;
+ }
+ /* padding-top: 95px;*/
+ /*}*/
+ /*.main-text br{*/
+ /* padding-bottom: 10px;*/
+ /*}*/
+ /*残念ながらほとんど不正解*/
+ main{
+ width: 100%;
+ display: block; /*[重要]display:flexの解除*/
+ }
+ 
+ .blog{
+ width: 100%;
+ margin: 0;
+ }
+ 
+ .blog-box {
+  /*横幅が変わったときの左右の余白を指定*/
+ padding-left: 2%;
+ padding-right: 2%;
+ }
+ 
+ .blog-image {
+ width: 49%;
+ }
+ 
+ .blog-text {
+ width: 49%;
+ padding-top: 5px;
+ }
+
+ .sidebar {
+ width: 100%;
+ }
+
+ .sidebar-contents {
+ padding-left: 3%;
+ padding-right: 3%;
+ }
+
+ .instagram-box {
+ width: 48%;
+ padding-top: 48%;
+ }
+
+ .instagram-box:nth-child(odd) {
+ margin-right: 4%;
+ }
+
+ .pagination {
+ margin-bottom: 50px;
+ }
+}
